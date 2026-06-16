@@ -1,30 +1,3 @@
-```html
-<!--
-=========================================================
-ASTRO CLIENT SHOWCASE
-Premium Modern Client UI
-Made to be EASY to edit
-
-HOW TO EDIT FEATURES:
-1. Find the "CLIENT FEATURES" section
-2. Add new modules like this:
-
-{
-    name: "New Module",
-    description: "What the module does."
-}
-
-DONE! It auto-adds to the page.
-
-HOW TO CHANGE CLIENT NAME:
-Find:
-const CLIENT_NAME = "Astro Client";
-
-HOW TO CHANGE COLORS:
-Edit CSS variables in :root
-=========================================================
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,12 +9,7 @@ Edit CSS variables in :root
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/*
-=========================================================
-THEME / COLORS
-Easy to customize
-=========================================================
-*/
+
 :root{
     --bg:#0d0d0f;
     --secondary:#151518;
@@ -55,11 +23,7 @@ Easy to customize
     --radius:24px;
 }
 
-/*
-=========================================================
-GLOBAL
-=========================================================
-*/
+
 *{
     margin:0;
     padding:0;
@@ -86,11 +50,7 @@ body{
     min-height:100vh;
 }
 
-/*
-=========================================================
-BACKGROUND GLOW
-=========================================================
-*/
+
 .blur-bg{
     position:fixed;
     inset:0;
@@ -132,21 +92,13 @@ BACKGROUND GLOW
     }
 }
 
-/*
-=========================================================
-MAIN LAYOUT
-=========================================================
-*/
+
 .wrapper{
     display:flex;
     min-height:100vh;
 }
 
-/*
-=========================================================
-SIDEBAR
-=========================================================
-*/
+
 .sidebar{
     width:260px;
     background:rgba(255,255,255,.03);
@@ -194,11 +146,7 @@ SIDEBAR
     color:white;
 }
 
-/*
-=========================================================
-CONTENT
-=========================================================
-*/
+
 .content{
     margin-left:260px;
     width:100%;
@@ -221,11 +169,7 @@ CONTENT
     font-size:16px;
 }
 
-/*
-=========================================================
-SEARCH BAR
-=========================================================
-*/
+
 .search{
     width:100%;
     background:rgba(255,255,255,.04);
@@ -242,11 +186,7 @@ SEARCH BAR
     border-color:rgba(255,255,255,.15);
 }
 
-/*
-=========================================================
-CATEGORY HEADER
-=========================================================
-*/
+
 .category-header{
     display:flex;
     justify-content:space-between;
@@ -263,11 +203,6 @@ CATEGORY HEADER
     color:var(--text-soft);
 }
 
-/*
-=========================================================
-MODULE GRID
-=========================================================
-*/
 .grid{
     display:grid;
     grid-template-columns:
@@ -275,11 +210,7 @@ MODULE GRID
     gap:18px;
 }
 
-/*
-=========================================================
-MODULE CARD
-=========================================================
-*/
+
 .card{
     background:rgba(255,255,255,.03);
     border:1px solid var(--border);
@@ -305,11 +236,7 @@ MODULE CARD
     font-size:14px;
 }
 
-/*
-=========================================================
-RESPONSIVE
-=========================================================
-*/
+
 @media(max-width:900px){
     .sidebar{
         width:100%;
@@ -338,7 +265,6 @@ RESPONSIVE
 
 <div class="wrapper">
 
-    <!-- SIDEBAR -->
     <div class="sidebar">
 
         <div class="logo">
@@ -372,7 +298,7 @@ RESPONSIVE
 
     </div>
 
-    <!-- CONTENT -->
+
     <div class="content">
 
         <div class="hero">
@@ -382,7 +308,6 @@ RESPONSIVE
             </p>
         </div>
 
-        <!-- SEARCH -->
         <input
             id="searchInput"
             class="search"
@@ -408,20 +333,8 @@ RESPONSIVE
 </div>
 
 <script>
-/*
-=========================================================
-CLIENT SETTINGS
-=========================================================
-*/
 
 const CLIENT_NAME = "Astro Client";
-
-/*
-=========================================================
-CLIENT FEATURES
-JUST EDIT THIS SECTION
-=========================================================
-*/
 
 const modules = {
 
@@ -501,13 +414,6 @@ description:"Fully customizable HUD."
 ]
 
 };
-
-/*
-=========================================================
-MAIN SYSTEM
-DO NOT TOUCH
-=========================================================
-*/
 
 const grid =
 document.getElementById("moduleGrid");
