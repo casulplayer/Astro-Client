@@ -1,13 +1,65 @@
+```html
+<!--
+=========================================================
+ASTRO CLIENT SHOWCASE
+Premium Modern Client UI
+Made to be EASY to edit
+
+HOW TO EDIT FEATURES:
+1. Find the "CLIENT FEATURES" section
+2. Add new modules like this:
+
+{
+    name: "New Module",
+    description: "What the module does."
+}
+
+DONE! It auto-adds to the page.
+
+HOW TO CHANGE CLIENT NAME:
+Find:
+const CLIENT_NAME = "Astro Client";
+
+HOW TO CHANGE COLORS:
+Edit CSS variables in :root
+=========================================================
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Client Showcase</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Astro Client</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+/*
+=========================================================
+THEME / COLORS
+Easy to customize
+=========================================================
+*/
+:root{
+    --bg:#0d0d0f;
+    --secondary:#151518;
+    --card:#17171c;
+    --border:rgba(255,255,255,.07);
+    --text:#ffffff;
+    --text-soft:#9d9da6;
+    --hover:#222228;
+    --accent:#d9d9df;
+    --shadow:rgba(0,0,0,.4);
+    --radius:24px;
+}
+
+/*
+=========================================================
+GLOBAL
+=========================================================
+*/
 *{
     margin:0;
     padding:0;
@@ -15,39 +67,60 @@
     font-family:'Inter',sans-serif;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:
-    radial-gradient(circle at top left, rgba(88,101,242,0.15), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(0,255,170,0.08), transparent 30%),
-    #09090d;
+    radial-gradient(circle at top left,
+    rgba(255,255,255,.04), transparent 30%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,255,255,.03), transparent 30%),
+
+    var(--bg);
+
+    color:var(--text);
     overflow-x:hidden;
-    color:white;
     min-height:100vh;
 }
 
-/* Background glow */
-.glow{
+/*
+=========================================================
+BACKGROUND GLOW
+=========================================================
+*/
+.blur-bg{
     position:fixed;
-    width:400px;
-    height:400px;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.orb{
+    position:absolute;
     border-radius:50%;
     filter:blur(120px);
-    opacity:0.2;
-    z-index:-1;
-    animation: float 10s infinite ease-in-out;
+    opacity:.06;
+    animation:float 12s ease-in-out infinite;
 }
 
-.glow1{
-    background:#5865f2;
-    top:-100px;
-    left:-100px;
+.orb1{
+    width:450px;
+    height:450px;
+    background:#ffffff;
+    top:-120px;
+    left:-120px;
 }
 
-.glow2{
-    background:#00ffaa;
-    right:-100px;
+.orb2{
+    width:350px;
+    height:350px;
+    background:#bdbdbd;
     bottom:-100px;
-    animation-delay:2s;
+    right:-100px;
+    animation-delay:3s;
 }
 
 @keyframes float{
@@ -55,287 +128,466 @@ body{
         transform:translateY(0px);
     }
     50%{
-        transform:translateY(30px);
+        transform:translateY(40px);
     }
 }
 
-.container{
+/*
+=========================================================
+MAIN LAYOUT
+=========================================================
+*/
+.wrapper{
     display:flex;
-    justify-content:center;
-    align-items:center;
     min-height:100vh;
-    padding:20px;
 }
 
-.client-ui{
-    width:900px;
-    height:550px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(18px);
-    border-radius:22px;
-    display:flex;
-    overflow:hidden;
-    box-shadow:
-    0 0 30px rgba(0,0,0,0.4),
-    inset 0 0 20px rgba(255,255,255,0.02);
-    animation:fadeIn 0.8s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
+/*
+=========================================================
+SIDEBAR
+=========================================================
+*/
 .sidebar{
-    width:220px;
-    background:rgba(0,0,0,0.25);
-    border-right:1px solid rgba(255,255,255,0.08);
-    padding:20px;
+    width:260px;
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(20px);
+    border-right:1px solid var(--border);
+    padding:28px;
+    position:fixed;
+    height:100vh;
 }
 
 .logo{
-    font-size:26px;
-    font-weight:700;
-    margin-bottom:25px;
-    text-align:center;
-    color:#fff;
-    text-shadow:0 0 20px rgba(88,101,242,0.5);
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:35px;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:#9f9fa8;
 }
 
 .category{
     width:100%;
-    padding:14px;
     border:none;
-    margin-bottom:10px;
-    border-radius:14px;
-    background:rgba(255,255,255,0.05);
-    color:white;
-    cursor:pointer;
-    transition:0.25s ease;
+    background:transparent;
+    color:var(--text-soft);
     text-align:left;
-    font-size:15px;
-}
-
-.category:hover{
-    transform:translateX(5px);
-    background:rgba(255,255,255,0.08);
-}
-
-.category.active{
-    background:linear-gradient(90deg,#5865f2,#00ffaa);
-    color:black;
-    font-weight:700;
-    box-shadow:0 0 25px rgba(88,101,242,0.4);
-}
-
-.content{
-    flex:1;
-    padding:35px;
-    overflow-y:auto;
-}
-
-.title{
-    font-size:34px;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    opacity:0.65;
-    margin-bottom:30px;
-}
-
-.module-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:16px;
-}
-
-.module{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.06);
+    padding:16px 18px;
     border-radius:18px;
-    padding:18px;
-    transition:0.25s ease;
-    position:relative;
-    overflow:hidden;
-}
-
-.module::before{
-    content:'';
-    position:absolute;
-    width:100%;
-    height:4px;
-    top:0;
-    left:0;
-    background:linear-gradient(90deg,#5865f2,#00ffaa);
-}
-
-.module:hover{
-    transform:translateY(-6px);
-    box-shadow:0 0 25px rgba(88,101,242,0.18);
-}
-
-.module-name{
-    font-size:18px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition:.25s ease;
+    font-size:15px;
     font-weight:600;
 }
 
-.module-desc{
-    opacity:0.6;
-    margin-top:8px;
+.category:hover{
+    background:rgba(255,255,255,.05);
+    color:white;
+    transform:translateX(5px);
+}
+
+.category.active{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+/*
+=========================================================
+CONTENT
+=========================================================
+*/
+.content{
+    margin-left:260px;
+    width:100%;
+    padding:50px;
+}
+
+.hero{
+    margin-bottom:35px;
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:800;
+    letter-spacing:-2px;
+}
+
+.hero p{
+    color:var(--text-soft);
+    margin-top:12px;
+    font-size:16px;
+}
+
+/*
+=========================================================
+SEARCH BAR
+=========================================================
+*/
+.search{
+    width:100%;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px 22px;
+    color:white;
+    outline:none;
+    margin:25px 0 35px;
+    font-size:15px;
+}
+
+.search:focus{
+    border-color:rgba(255,255,255,.15);
+}
+
+/*
+=========================================================
+CATEGORY HEADER
+=========================================================
+*/
+.category-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.category-title{
+    font-size:34px;
+    font-weight:800;
+}
+
+.module-count{
+    color:var(--text-soft);
+}
+
+/*
+=========================================================
+MODULE GRID
+=========================================================
+*/
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(260px,1fr));
+    gap:18px;
+}
+
+/*
+=========================================================
+MODULE CARD
+=========================================================
+*/
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    transition:.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.05);
+}
+
+.card-name{
+    font-size:18px;
+    font-weight:700;
+}
+
+.card-desc{
+    margin-top:10px;
+    color:var(--text-soft);
+    line-height:1.5;
     font-size:14px;
 }
 
-::-webkit-scrollbar{
-    width:8px;
-}
+/*
+=========================================================
+RESPONSIVE
+=========================================================
+*/
+@media(max-width:900px){
+    .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+    }
 
-::-webkit-scrollbar-thumb{
-    background:#5865f2;
-    border-radius:20px;
+    .wrapper{
+        flex-direction:column;
+    }
+
+    .content{
+        margin-left:0;
+        padding:25px;
+    }
 }
 </style>
 </head>
+
 <body>
 
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
+<div class="blur-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+</div>
 
-<div class="container">
-    <div class="client-ui">
+<div class="wrapper">
 
-        <div class="sidebar">
-            <div class="logo">My Client</div>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
 
-            <button class="category active" onclick="switchCategory('Combat', this)">⚔ Combat</button>
-            <button class="category" onclick="switchCategory('Movement', this)">🏃 Movement</button>
-            <button class="category" onclick="switchCategory('Visual', this)">👁 Visual</button>
-            <button class="category" onclick="switchCategory('Misc', this)">📦 Misc</button>
-            <button class="category" onclick="switchCategory('Client', this)">⚙ Client</button>
+        <div class="logo">
+            Astro <span>Client</span>
         </div>
 
-        <div class="content">
-            <div class="title" id="categoryTitle">Combat</div>
-            <div class="subtitle">
-                Showcase of client modules
+        <button class="category active"
+        onclick="switchCategory('Combat', this)">
+        ⚔ Combat
+        </button>
+
+        <button class="category"
+        onclick="switchCategory('Movement', this)">
+        🏃 Movement
+        </button>
+
+        <button class="category"
+        onclick="switchCategory('Visual', this)">
+        👁 Visual
+        </button>
+
+        <button class="category"
+        onclick="switchCategory('Misc', this)">
+        📦 Misc
+        </button>
+
+        <button class="category"
+        onclick="switchCategory('Client', this)">
+        ⚙ Client
+        </button>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="hero">
+            <h1>Astro Client</h1>
+            <p>
+                Premium Minecraft client showcase
+            </p>
+        </div>
+
+        <!-- SEARCH -->
+        <input
+            id="searchInput"
+            class="search"
+            placeholder="Search modules..."
+        >
+
+        <div class="category-header">
+            <div class="category-title"
+            id="categoryTitle">
+                Combat
             </div>
 
-            <div class="module-grid" id="moduleGrid"></div>
+            <div class="module-count"
+            id="moduleCount">
+                0 Modules
+            </div>
         </div>
+
+        <div class="grid"
+        id="moduleGrid"></div>
+
     </div>
 </div>
 
 <script>
 /*
-====================================
-JUST EDIT THESE LISTS ↓
-Add names and they appear automatically
-====================================
+=========================================================
+CLIENT SETTINGS
+=========================================================
+*/
+
+const CLIENT_NAME = "Astro Client";
+
+/*
+=========================================================
+CLIENT FEATURES
+JUST EDIT THIS SECTION
+=========================================================
 */
 
 const modules = {
-    Combat: [
-        "Antibot",
-        "KillAura",
-        "TriggerBot",
-        "AimAssist",
-        "SheildStun",
-        "Reach",
-        "Crit",
-        "MaceDMG",
-        "AutoTotem",
-        "SpearKill",
-        "AutoGapple",
-        "Velocity",
-        "AntiPoison",
-        "AutoPot",
-        "HitboxExtender",
-        "NoMiss",
-        "Strafe",
-        "AutoWeb",
-        "CrystalAura",
-        "AutoClicker",
-        "FastBow",
-        "SafeAnchor",
-        "AutoCrystalHit",
-        "AutoAnchor",
-        "MaceAura",
-        "MaceSwap",
-        "AutoCart"    
-    ],
 
-    Movement: [
-        "Sprint",
-        "Fly",
-        "Speed",
-        "LongJump",
-        "Step"
-    ],
+Combat: [
+{
+name:"KillAura",
+description:"Automatically attacks enemies."
+},
+{
+name:"Reach",
+description:"Extends combat distance."
+},
+{
+name:"Velocity",
+description:"Reduces knockback."
+},
+{
+name:"AutoTotem",
+description:"Automatically equips totems."
+},
+{
+name:"CrystalAura",
+description:"Crystal PvP automation."
+}
+],
 
-    Visual: [
-        "ESP",
-        "FullBright",
-        "Nametags",
-        "Tracers",
-        "Shaders"
-    ],
+Movement: [
+{
+name:"Sprint",
+description:"Automatically sprint."
+},
+{
+name:"Fly",
+description:"Enhanced movement."
+},
+{
+name:"Step",
+description:"Walk up blocks."
+}
+],
 
-    Misc: [
-        "AutoGG",
-        "ChestStealer",
-        "AutoTool",
-        "Timer"
-    ],
+Visual: [
+{
+name:"ESP",
+description:"See entities easier."
+},
+{
+name:"FullBright",
+description:"Maximum brightness."
+},
+{
+name:"Shaders",
+description:"Enhanced visuals."
+}
+],
 
-    Client: [
-        "ClickGUI",
-        "HUD",
-        "Themes",
-        "Animations"
-    ]
+Misc: [
+{
+name:"AutoGG",
+description:"Auto sends GG."
+},
+{
+name:"ChestStealer",
+description:"Fast looting."
+}
+],
+
+Client: [
+{
+name:"ClickGUI",
+description:"Modern click GUI."
+},
+{
+name:"HUD",
+description:"Fully customizable HUD."
+}
+]
+
 };
 
-const moduleGrid = document.getElementById("moduleGrid");
-const categoryTitle = document.getElementById("categoryTitle");
+/*
+=========================================================
+MAIN SYSTEM
+DO NOT TOUCH
+=========================================================
+*/
+
+const grid =
+document.getElementById("moduleGrid");
+
+const title =
+document.getElementById("categoryTitle");
+
+const count =
+document.getElementById("moduleCount");
+
+const search =
+document.getElementById("searchInput");
+
+let currentCategory = "Combat";
 
 function renderModules(category){
-    categoryTitle.textContent = category;
-    moduleGrid.innerHTML = "";
 
-    modules[category].forEach(module => {
-        const div = document.createElement("div");
-        div.className = "module";
+currentCategory = category;
 
-        div.innerHTML = `
-            <div class="module-name">${module}</div>
-            <div class="module-desc">
-                Premium ${category.toLowerCase()} feature
-            </div>
-        `;
+grid.innerHTML = "";
 
-        moduleGrid.appendChild(div);
-    });
+title.textContent = category;
+
+const query =
+search.value.toLowerCase();
+
+const filtered =
+modules[category].filter(module =>
+module.name
+.toLowerCase()
+.includes(query)
+);
+
+count.textContent =
+`${filtered.length} Modules`;
+
+filtered.forEach(module => {
+
+const div =
+document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML = `
+<div class="card-name">
+${module.name}
+</div>
+
+<div class="card-desc">
+${module.description}
+</div>
+`;
+
+grid.appendChild(div);
+
+});
 }
 
 function switchCategory(category, element){
-    document.querySelectorAll(".category").forEach(btn=>{
-        btn.classList.remove("active");
-    });
 
-    element.classList.add("active");
-    renderModules(category);
+document
+.querySelectorAll(".category")
+.forEach(button => {
+button.classList
+.remove("active");
+});
+
+element.classList
+.add("active");
+
+renderModules(category);
 }
+
+search.addEventListener("input", () => {
+renderModules(currentCategory);
+});
 
 renderModules("Combat");
 </script>
 
 </body>
 </html>
+```
