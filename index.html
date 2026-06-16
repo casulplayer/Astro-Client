@@ -338,80 +338,112 @@ const CLIENT_NAME = "Astro Client";
 
 const modules = {
 
+```js id="n4f7qz"
 Combat: [
-{
-name:"KillAura",
-description:"Automatically attacks enemies."
-},
-{
-name:"Reach",
-description:"Extends combat distance."
-},
-{
-name:"Velocity",
-description:"Reduces knockback."
-},
-{
-name:"AutoTotem",
-description:"Automatically equips totems."
-},
-{
-name:"CrystalAura",
-description:"Crystal PvP automation."
-}
+{name:"AntiBot",description:"Detects and avoids fake entities."},
+{name:"KillAura",description:"Automatically attacks nearby enemies."},
+{name:"TriggerBot",description:"Automatically attacks when aiming at targets."},
+{name:"AimAssist",description:"Helps improve combat aim."},
+{name:"ShieldStun",description:"Disables enemy shields faster."},
+{name:"Reach",description:"Extends combat distance."},
+{name:"Crit",description:"Automatically lands critical hits."},
+{name:"MaceDMG",description:"Enhances mace combat damage."},
+{name:"AutoTotem",description:"Automatically equips totems."},
+{name:"SpearKill",description:"Optimizes spear combat."},
+{name:"AutoGapple",description:"Automatically eats golden apples."},
+{name:"Velocity",description:"Reduces knockback."},
+{name:"AntiPoison",description:"Helps counter poison effects."},
+{name:"AutoPot",description:"Automatically throws potions."},
+{name:"HitboxExtender",description:"Expands target hitboxes."},
+{name:"NoMiss",description:"Improves attack consistency."},
+{name:"Strafe",description:"Enhances combat movement."},
+{name:"AutoWeb",description:"Automatically places cobwebs in combat."},
+{name:"CrystalAura",description:"Crystal PvP automation."},
+{name:"AutoClicker",description:"Automatically clicks at set speeds."},
+{name:"FastBow",description:"Shoots bows faster."},
+{name:"SafeAnchor",description:"Safer respawn anchor combat."},
+{name:"AutoCrystalHit",description:"Automatically attacks crystals."},
+{name:"AutoAnchor",description:"Automates anchor placement and detonation."},
+{name:"MaceAura",description:"Automatically attacks using mace combat."},
+{name:"MaceSwap",description:"Quickly swaps to mace when needed."},
+{name:"AutoCart",description:"Automates minecart combat tactics."}
 ],
 
 Movement: [
-{
-name:"Sprint",
-description:"Automatically sprint."
-},
-{
-name:"Fly",
-description:"Enhanced movement."
-},
-{
-name:"Step",
-description:"Walk up blocks."
-}
+{name:"AntiAFK",description:"Prevents AFK detection."},
+{name:"Flight",description:"Allows free movement through the air."},
+{name:"NoFall",description:"Prevents fall damage."},
+{name:"NoSlow",description:"Removes movement slowdown."},
+{name:"Jesus",description:"Walk on water surfaces."},
+{name:"Scaffold",description:"Automatically places blocks while moving."},
+{name:"Spider",description:"Climb walls like a spider."},
+{name:"Step",description:"Walk up blocks automatically."},
+{name:"Speed",description:"Increases movement speed."},
+{name:"AutoSprint",description:"Automatically sprint."},
+{name:"InvWalk",description:"Move while inventory is open."},
+{name:"WindJump",description:"Improves jumping movement."},
+{name:"BoatFly",description:"Allows boats to fly."},
+{name:"BunnyHop",description:"Chain movement speed jumps."},
+{name:"MLG",description:"Attempts clutch landings automatically."},
+{name:"OmniSprint",description:"Sprint in every direction."},
+{name:"SafeWalk",description:"Prevents walking off edges."},
+{name:"vClip",description:"Move vertically through blocks."},
+{name:"ClickTP",description:"Teleport to clicked locations."},
+{name:"FastLadder",description:"Climb ladders faster."}
 ],
 
 Visual: [
-{
-name:"ESP",
-description:"See entities easier."
-},
-{
-name:"FullBright",
-description:"Maximum brightness."
-},
-{
-name:"Shaders",
-description:"Enhanced visuals."
-}
+{name:"Zoom",description:"Zoom in for better visibility."},
+{name:"Fullbright",description:"Maximum world brightness."},
+{name:"NoHurtCam",description:"Removes hurt camera shaking."},
+{name:"TrueSight",description:"Reveal hidden entities."},
+{name:"HealthTags",description:"Shows player health above entities."},
+{name:"PortalESP",description:"Highlights portals visually."},
+{name:"Freecam",description:"Move camera freely without moving player."},
+{name:"NoFire",description:"Removes fire overlay."},
+{name:"NoWeather",description:"Disables weather effects."},
+{name:"FovChanger",description:"Customize field of view."},
+{name:"PotionHUD",description:"Displays active potion effects."},
+{name:"SwingAnimation",description:"Customize swing animations."},
+{name:"Xray",description:"Highlights valuable blocks."},
+{name:"TargetHUD",description:"Displays target information."},
+{name:"NoPumpkin",description:"Removes pumpkin blur overlay."},
+{name:"BarrierESP",description:"Highlights invisible barriers."},
+{name:"NoChatReports",description:"Disables chat report features."}
 ],
 
 Misc: [
-{
-name:"AutoGG",
-description:"Auto sends GG."
-},
-{
-name:"ChestStealer",
-description:"Fast looting."
-}
+{name:"NoJumpDelay",description:"Removes jump cooldown delay."},
+{name:"FastPlace",description:"Place blocks faster."},
+{name:"Blink",description:"Temporarily delays movement packets."},
+{name:"AutoRespawn",description:"Automatically respawns after death."},
+{name:"ChestStealer",description:"Quickly loots chests."},
+{name:"StaffDetector",description:"Detects possible staff activity."},
+{name:"AutoEat",description:"Automatically eats food."},
+{name:"AntiBlind",description:"Reduces blindness effects."},
+{name:"DeathCoords",description:"Saves death coordinates."},
+{name:"AutoLog",description:"Automatically disconnects in danger."},
+{name:"AutoArmor",description:"Automatically equips armor."},
+{name:"FastXP",description:"Uses XP faster."},
+{name:"Command",description:"Extra utility commands."},
+{name:"Extinguish",description:"Automatically removes fire."},
+{name:"FastBreak",description:"Break blocks faster."}
 ],
 
 Client: [
-{
-name:"ClickGUI",
-description:"Modern click GUI."
-},
-{
-name:"HUD",
-description:"Fully customizable HUD."
-}
+{name:"ClickGUI",description:"Modern client menu interface."},
+{name:"Panic",description:"Quickly disables active modules."},
+{name:"ClientSpoof",description:"Spoofs client information."},
+{name:"Streamer",description:"Hides sensitive information while streaming."},
+{name:"FakeLag",description:"Simulates lag effects."},
+{name:"Coordinates",description:"Displays player coordinates."},
+{name:"ArmorHUD",description:"Shows equipped armor status."},
+{name:"Keystrokes",description:"Displays pressed movement keys."},
+{name:"Destroy",description:"Utility destruction tools."},
+{name:"NoScreenShare",description:"Protects client visibility."},
+{name:"ArrayList",description:"Displays enabled modules."}
 ]
+```
 
 };
 
