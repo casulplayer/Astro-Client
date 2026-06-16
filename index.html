@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Client Showcase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top left, rgba(88,101,242,0.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0,255,170,0.08), transparent 30%),
+    #09090d;
+    overflow-x:hidden;
+    color:white;
+    min-height:100vh;
+}
+
+/* Background glow */
+.glow{
+    position:fixed;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:0.2;
+    z-index:-1;
+    animation: float 10s infinite ease-in-out;
+}
+
+.glow1{
+    background:#5865f2;
+    top:-100px;
+    left:-100px;
+}
+
+.glow2{
+    background:#00ffaa;
+    right:-100px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(30px);
+    }
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.client-ui{
+    width:900px;
+    height:550px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    border-radius:22px;
+    display:flex;
+    overflow:hidden;
+    box-shadow:
+    0 0 30px rgba(0,0,0,0.4),
+    inset 0 0 20px rgba(255,255,255,0.02);
+    animation:fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.sidebar{
+    width:220px;
+    background:rgba(0,0,0,0.25);
+    border-right:1px solid rgba(255,255,255,0.08);
+    padding:20px;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:25px;
+    text-align:center;
+    color:#fff;
+    text-shadow:0 0 20px rgba(88,101,242,0.5);
+}
+
+.category{
+    width:100%;
+    padding:14px;
+    border:none;
+    margin-bottom:10px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.05);
+    color:white;
+    cursor:pointer;
+    transition:0.25s ease;
+    text-align:left;
+    font-size:15px;
+}
+
+.category:hover{
+    transform:translateX(5px);
+    background:rgba(255,255,255,0.08);
+}
+
+.category.active{
+    background:linear-gradient(90deg,#5865f2,#00ffaa);
+    color:black;
+    font-weight:700;
+    box-shadow:0 0 25px rgba(88,101,242,0.4);
+}
+
+.content{
+    flex:1;
+    padding:35px;
+    overflow-y:auto;
+}
+
+.title{
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    opacity:0.65;
+    margin-bottom:30px;
+}
+
+.module-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:16px;
+}
+
+.module{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:18px;
+    transition:0.25s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.module::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:4px;
+    top:0;
+    left:0;
+    background:linear-gradient(90deg,#5865f2,#00ffaa);
+}
+
+.module:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(88,101,242,0.18);
+}
+
+.module-name{
+    font-size:18px;
+    font-weight:600;
+}
+
+.module-desc{
+    opacity:0.6;
+    margin-top:8px;
+    font-size:14px;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#5865f2;
+    border-radius:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="container">
+    <div class="client-ui">
+
+        <div class="sidebar">
+            <div class="logo">My Client</div>
+
+            <button class="category active" onclick="switchCategory('Combat', this)">⚔ Combat</button>
+            <button class="category" onclick="switchCategory('Movement', this)">🏃 Movement</button>
+            <button class="category" onclick="switchCategory('Visual', this)">👁 Visual</button>
+            <button class="category" onclick="switchCategory('Misc', this)">📦 Misc</button>
+            <button class="category" onclick="switchCategory('Client', this)">⚙ Client</button>
+        </div>
+
+        <div class="content">
+            <div class="title" id="categoryTitle">Combat</div>
+            <div class="subtitle">
+                Showcase of client modules
+            </div>
+
+            <div class="module-grid" id="moduleGrid"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+/*
+====================================
+JUST EDIT THESE LISTS ↓
+Add names and they appear automatically
+====================================
+*/
+
+const modules = {
+    Combat: [
+        "KillAura",
+        "Velocity",
+        "Criticals",
+        "AutoClicker",
+        "Reach"
+    ],
+
+    Movement: [
+        "Sprint",
+        "Fly",
+        "Speed",
+        "LongJump",
+        "Step"
+    ],
+
+    Visual: [
+        "ESP",
+        "FullBright",
+        "Nametags",
+        "Tracers",
+        "Shaders"
+    ],
+
+    Misc: [
+        "AutoGG",
+        "ChestStealer",
+        "AutoTool",
+        "Timer"
+    ],
+
+    Client: [
+        "ClickGUI",
+        "HUD",
+        "Themes",
+        "Animations"
+    ]
+};
+
+const moduleGrid = document.getElementById("moduleGrid");
+const categoryTitle = document.getElementById("categoryTitle");
+
+function renderModules(category){
+    categoryTitle.textContent = category;
+    moduleGrid.innerHTML = "";
+
+    modules[category].forEach(module => {
+        const div = document.createElement("div");
+        div.className = "module";
+
+        div.innerHTML = `
+            <div class="module-name">${module}</div>
+            <div class="module-desc">
+                Premium ${category.toLowerCase()} feature
+            </div>
+        `;
+
+        moduleGrid.appendChild(div);
+    });
+}
+
+function switchCategory(category, element){
+    document.querySelectorAll(".category").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    element.classList.add("active");
+    renderModules(category);
+}
+
+renderModules("Combat");
+</script>
+
+</body>
+</html>
